@@ -21,21 +21,25 @@
         <div class="col-sm-1"></div>
             <div class="col-sm-10">
                <div class="container">
-                <?php foreach($this->allFilms as $allFilms): ?>
+                <?php
+                $p=0; 
+                foreach($this->allFilms as $allFilms): 
+                ?>
                     <div class="row">
                         <div class="col-sm-1">
                             <input class="vote" type="radio" name="optradio" data="<?=$allFilms['id'];?>">
                         </div>                
                         <div class="progress col-sm-10">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                <span class="sr-only">60% Complete</span>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<?=$allFilms['votes'];?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$this->perArray[$p];?>;">
                             </div>
                             <span class="progress-type"><?=$allFilms['film_name'];?></span>
-                            <span class="progress-completed"><?=$allFilms['votes'];?></span>
+                            <span class="progress-completed"><?=$this->perArray[$p];?></span>
                         </div>
-                
                     </div>
-                    <?php endforeach; ?>
+                    <?php
+                    $p++;
+                    endforeach; 
+                    ?>
                 </div>
             </div>
         <div class="col-sm-1"></div>

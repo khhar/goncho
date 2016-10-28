@@ -28,7 +28,9 @@ class System_routes {
             }
             //5 else
             else {
-              header("Location:/kino/views/error.php");
+              include 'controllers/error.php';
+              $def_obj = new Error();
+              $def_obj->index();
             }
           }
           //4 else
@@ -38,12 +40,16 @@ class System_routes {
         }
         //3 else
         else {
-          header("Location:/kino/views/error.php");
+          include 'controllers/error.php';
+          $def_obj = new Error();
+          $def_obj->index();
         }
       }
       //2 else
       else {
-        header("Location:/kino/views/error.php");
+        include 'controllers/error.php';
+        $def_obj = new Error();
+        $def_obj->index();
       }
     }
     //1 else

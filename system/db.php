@@ -30,33 +30,41 @@ class System_db {
         return $data;
     }
     public function insert($table,$insert) {
-            $files = [];
-            $values = [];
-            foreach($insert as $k=>$v){
-                $files[] = $k;
-                $values[] = $v;
-            }
-            $fl = implode(',', $files);
-            $vl = implode("','", $values);
-            $this->con->query("insert into $table ($fl) values ('$vl')");
+        $files = [];
+        $values = [];
+        foreach($insert as $k=>$v){
+            $files[] = $k;
+            $values[] = $v;
+        }
+        $fl = implode(',', $files);
+        $vl = implode("','", $values);
+        $this->con->query("insert into $table ($fl) values ('$vl')");
     }
     public function update($table, $update, $where, $type=true) {
-            $files = [];
-            $a = [];
-            foreach($update as $k=>$v){
-                if($type){
-                    $files[] = $k.'='."'".$v."'";
-                }
-                else {
-                    $files[] = $k.'='.$v;
-                }
+        $files = [];
+        $a = [];
+        foreach($update as $k=>$v){
+            if($type){
+                $files[] = $k.'='."'".$v."'";
             }
-            foreach($where as $k=>$v){
-            $fl = implode(',', $files);
-                $a[] = $k.'='."'".$v."'";	
+            else {
+                $files[] = $k.'='.$v;
             }
-            $b = implode(' and ', $a);
-            //var_dump("update $table set $fl where $b");die;
-            $this->con->query("update $table set $fl where $b");
+        }
+        foreach($where as $k=>$v){
+        $fl = implode(',', $files);
+            $a[] = $k.'='."'".$v."'";	
+        }
+        $b = implode(' and ', $a);
+        $this->con->query("update $table set $fl where $b");
+    }
+    public function delete($table, $where) {
+        $a = [];
+        foreach($where as $k=>$v){
+            $a[] = $k.'='."'".$v."'";   
+        }
+        $b = implode(' and ', $a);
+        $this->con->query("delete from $table where $b");
     }
 }
+

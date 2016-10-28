@@ -22,4 +22,23 @@
               </ul>
             </div>
         </nav>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete</h4>
+              </div>
+              <div class="modal-body">
+                <p>You really want to delete this film?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger yes" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
 

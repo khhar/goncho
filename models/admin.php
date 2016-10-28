@@ -18,5 +18,9 @@ class Models_admin extends System_model{
     }
     public function  updateFilm($id, $film_name, $votes){
         $this->db->update('films',array('film_name'=>$film_name, 'votes'=>$votes,),array('id'=>$id));
+        return 'success';
+    }
+    public function  deleteFilm($id){
+        $this->db->delete('films', array('id'=>$id));
     }
 }

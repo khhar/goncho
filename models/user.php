@@ -10,5 +10,7 @@ class Models_user extends System_model{
     }
     public function  voting($id,$type){
        $this->db->update('films',array('votes'=>"votes+1"),array('id'=>$id),$type);
+       $selAllFilms = $this->db->select("select * from films")->all();
+       return $selAllFilms;
     }
 }

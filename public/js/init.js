@@ -14,7 +14,35 @@ $(document).ready(function(){
                 ajax_film_votes:film_votes
             },
             success:function(result){
+                if(result == 'error') {
+                    $('.error-or-success').css('display', 'block');
+                    $('.error-or-success').addClass('panel-danger');
+                    $('.error-or-success').text('error');
+                }
+                else {
+                    $('.error-or-success').css('display', 'block');
+                    $('.error-or-success').addClass('panel-success');
+                    $('.error-or-success').text('success');
+                }
+            }
+        });
+    });
+    // ....... //
 
+    // delete films //
+    $('.del-film').click(function(){
+        window.film_id = $(this).attr('data');
+        window.this_tr = $(this).parent().parent();
+    });
+    $('.yes').click(function(){
+        $.ajax({
+            type:'post',
+            url:'/kino/adminaccount/deleteFilm/',
+            data:{
+                ajax_film_id:film_id
+            },
+            success:function(result){
+                this_tr.remove();
             }
         });
     });
@@ -26,11 +54,20 @@ $(document).ready(function(){
         $.ajax({
             type:'post',
             url:'/kino/home/voting/',
+            dataType: 'json',
             data:{
                 ajax_film_id:film_id
             },
             success:function(result){
-
+                if(result == 'error') {
+                    return false;
+                }
+                else {
+                    $('.progress-bar').each(function(index){
+                        $(this).css('width',result[index]);
+                        $(this).parent().parent().children('.progress').children('.progress-completed').text(result[index]);
+                    })
+                }
             }
         });
     });

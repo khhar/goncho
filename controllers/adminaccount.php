@@ -25,6 +25,19 @@ class Adminaccount extends System_controller {
             $film_votes = $_POST["ajax_film_votes"];
             $obj = new Models_admin();
             $updateingFilm = $obj->updateFilm($film_id, $film_name, $film_votes);
+            if(empty($updateingFilm)){
+                echo 'error';
+            }
+            else {
+                echo 'success';
+            }
+        }
+    }
+    public function deleteFilm() {
+        if(isset($_POST["ajax_film_id"])){
+            $film_id = $_POST["ajax_film_id"];
+            $obj = new Models_admin();
+            $deleteFilm = $obj->deleteFilm($film_id);
         }
     }
 }

@@ -47,6 +47,11 @@ nav {
 .votes-inp {
     padding: 2px 5px;
 }
+
+.glyphicon-remove {
+    color: red;
+    cursor: pointer;
+}
 /* ----- */
 
 /* error 404 */

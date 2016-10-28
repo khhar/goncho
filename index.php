@@ -11,6 +11,4 @@
     	}
     );
     $obj = new System_routes($url_arr);
-    
-    //
    

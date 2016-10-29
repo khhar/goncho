@@ -16,7 +16,7 @@ class Home extends System_controller {
         }
         $this->view->allFilms = $allFilms;
         $this->view->perArray = $perArray;
-        $this->view->render('home', FALSE);
+        $this->view->render('home');
 	}
     public function voting(){
         if(isset($_POST["ajax_film_id"])){
@@ -41,7 +41,12 @@ class Home extends System_controller {
             
         }
     }
-            
+    public function allFilms(){
+        $obj = new Models_user();
+        $allFilms = $obj->selAllFilms();
+        $this->view->allFilms = $allFilms;
+        $this->view->render('films');
+    }       
 }
 
     

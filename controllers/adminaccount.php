@@ -3,7 +3,7 @@ class Adminaccount extends System_controller {
     function __construct() {
         parent::__construct();
         if(!isset($_SESSION['id'])){
-            header("Location:/kino/"); 
+            header("Location:/admin");
         }
     }
     public function index() {

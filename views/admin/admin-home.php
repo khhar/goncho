@@ -6,9 +6,7 @@
 	  </div>
 	  <button type="submit" class="btn btn-success film-insert-btn" name="insert">Insert</button>
 	</form>
-	<div class="panel error-or-success" style="width: 200px;display: none;margin: 20px 0;">
-    	<div class="panel-body">Panel Content</div>
-  	</div>
+	<span class="error-or-success">aaa</span>
 	<div class="container">
 	  <table class="table table-bordered table-hover">
 	    <thead>

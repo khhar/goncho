@@ -7,7 +7,7 @@ $(document).ready(function(){
         var film_votes = $(this).parent().parent().children().children('.film-votes-inp').val();
         $.ajax({
             type:'post',
-            url:'/kino/adminaccount/updateFilm/',
+            url:'/adminaccount/updateFilm/',
             data:{
                 ajax_film_id:film_id,
                 ajax_film_name:film_name,
@@ -15,14 +15,27 @@ $(document).ready(function(){
             },
             success:function(result){
                 if(result == 'error') {
-                    $('.error-or-success').css('display', 'block');
-                    $('.error-or-success').addClass('panel-danger');
+                    $('.error-or-success').css({
+                        "background-color": "#ff9999",
+                        "display": "block",
+                        "border": "1px solid #ff8080"
+                    });
                     $('.error-or-success').text('error');
+                    setTimeout(function(){ 
+                        $('.error-or-success').css('display', 'none'); 
+                    }, 3000);
                 }
                 else {
-                    $('.error-or-success').css('display', 'block');
-                    $('.error-or-success').addClass('panel-success');
+                    $('.error-or-success').css({
+                        "background-color": "#e6ffcc",
+                        "display": "block",
+                        "border": "1px solid #d9ffb3",
+
+                    });
                     $('.error-or-success').text('success');
+                    setTimeout(function(){ 
+                        $('.error-or-success').css('display', 'none'); 
+                    }, 3000);
                 }
             }
         });
@@ -37,7 +50,7 @@ $(document).ready(function(){
     $('.yes').click(function(){
         $.ajax({
             type:'post',
-            url:'/kino/adminaccount/deleteFilm/',
+            url:'/adminaccount/deleteFilm/',
             data:{
                 ajax_film_id:film_id
             },
@@ -50,10 +63,14 @@ $(document).ready(function(){
 
     // voting films //
     $('.vote').click(function(){
+        if($(this).val() == 1){
+            return false;
+        }
         var film_id = $(this).attr('data');
+        var this_radio = $(this);
         $.ajax({
             type:'post',
-            url:'/kino/home/voting/',
+            url:'/home/voting/',
             dataType: 'json',
             data:{
                 ajax_film_id:film_id
@@ -67,6 +84,12 @@ $(document).ready(function(){
                         $(this).css('width',result[index]);
                         $(this).parent().parent().children('.progress').children('.progress-completed').text(result[index]);
                     })
+                    $('.vote').val('');
+                    this_radio.val(1);
+                    $('.voting-success').fadeIn(1000);
+                    setTimeout(function(){ 
+                        $('.voting-success').fadeOut(1000);; 
+                    }, 3000);
                 }
             }
         });

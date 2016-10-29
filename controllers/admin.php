@@ -9,7 +9,7 @@
                 $result = $admin->logIn(sha1($password), $email);
                 if(!empty($result)){
                    $_SESSION['id']=$result['id'];
-                   header("Location:/kino/adminaccount");
+                   header("Location:/adminaccount");
                 }else{
                     $this->view->error = "wrong email or password";
                 }
@@ -18,7 +18,7 @@
         }
         public function logOut() {
             session_destroy ();
-            header("Location:/kino/");
+            header("Location:/admin");
         }
            
     }

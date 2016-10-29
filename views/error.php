@@ -1,11 +1,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="/kino/public/css/bootstrap.css" />
-        <link rel="stylesheet" href="/kino/public/css/style.css" />
-        <script src="/kino/public/js/jquery.js"></script>
-        <script src="/kino/public/js/bootstrap.js"></script>
-        <script src="/kino/public/js/init.js"></script>
+        <link rel="stylesheet" href="/public/css/bootstrap.css" />
+        <link rel="stylesheet" href="/public/css/style.css" />
+        <script src="/public/js/jquery.js"></script>
+        <script src="/public/js/bootstrap.js"></script>
+        <script src="/public/js/init.js"></script>
     </head>
     <body>
         <div class="container">
@@ -20,7 +20,7 @@
                             Sorry, an error has occured, Requested page not found!
                         </div>
                         <div class="error-actions">
-                            <a href="http://localhost/kino/");" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Take Me Home </a>
+                            <a href="http://localhost/");" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Take Me Home </a>
                         </div>
                     </div>
                 </div>
